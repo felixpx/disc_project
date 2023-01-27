@@ -1,7 +1,7 @@
 const posts = [
   {
     title: "Featured",
-    href: "/featured",
+    href: "/marketplace",
     description: "Featured Music",
     date: "Mar 16, 2020",
     datetime: "2020-03-16",
@@ -17,7 +17,7 @@ const posts = [
   },
   {
     title: "Top Sales",
-    href: "/topsales",
+    href: "/marketplace",
     description: "Top Sales",
     date: "Mar 10, 2020",
     datetime: "2020-03-10",
@@ -32,8 +32,8 @@ const posts = [
     // },
   },
   {
-    title: "New Arrivals",
-    href: "/newarrivals",
+    title: "New",
+    href: "/marketplace",
     description: "Brand New",
     date: "Feb 12, 2020",
     datetime: "2020-02-12",
