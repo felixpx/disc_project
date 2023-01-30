@@ -28,27 +28,26 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const { logout, user, isAuthenticated, authenticate } = useMoralis();
+  const { logout, user, account, isAuthenticated, authenticate } = useMoralis();
 
   const router = useRouter();
 
-  const [userAddress, setUserAddress] = useState();
+  // const [userAddress, setUserAddress] = useState(user.get("ethAddress"));
 
   const [selected, setSelected] = useState();
 
-  useEffect(() => {
-    if (user) {
-      setUserAddress(
-        user.get("ethAddress").slice(0, 6).concat("...") +
-          user.get("ethAddress").slice(38, 44)
-      );
-    } else {
-      setUserAddress("not logged in");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user) {
+  //     setUserAddress(
+  //       user.get("ethAddress").slice(0, 6).concat("...") +
+  //         user.get("ethAddress").slice(38, 44)
+  //     );
+  //   } else {
+  //     setUserAddress("not logged in");
+  //   }
+  // }, []);
 
-  function handleClick() {
-    alert("u tried to logout");
+  async function handleClick() {
     if (isAuthenticated) {
       logout();
     } else {
@@ -107,11 +106,11 @@ export default function Navbar() {
               <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
                 {!isAuthenticated ? (
                   <button
-                    type="button"
+                    onClick={handleClick}
                     className="flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   >
                     <span className="sr-only">View notifications</span>
-                    Login
+                    {!isAuthenticated ? "Login" : account}
                   </button>
                 ) : (
                   ""
