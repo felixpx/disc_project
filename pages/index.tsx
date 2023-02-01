@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../src/components/Navbar";
 import Featured2 from "../src/components/Featured2";
+import { Profile } from "../src/components/Wallet/SignIn";
 const Home: NextPage = () => {
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center">
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
       </div>
 
       <main className="flex w-full flex-1 flex-col items-center px-20 text-center">
+        <Profile />
         <Featured2 />
       </main>
 

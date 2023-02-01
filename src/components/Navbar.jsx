@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useMoralis } from "react-moralis";
 import { useRouter } from "next/router";
+import SignIn from "./Wallet/SignIn";
 
 const user1 = {
   name: "Example Cook",
@@ -28,7 +29,7 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const { logout, user, account, isAuthenticated, authenticate } = useMoralis();
+  // const { logout, user, account, isAuthenticated, authenticate } = useMoralis();
 
   const router = useRouter();
 
@@ -47,13 +48,13 @@ export default function Navbar() {
   //   }
   // }, []);
 
-  async function handleClick() {
-    if (isAuthenticated) {
-      logout();
-    } else {
-      authenticate();
-    }
-  }
+  // async function handleClick() {
+  //   if (isAuthenticated) {
+  //     logout();
+  //   } else {
+  //     authenticate();
+  //   }
+  // }
 
   return (
     <Disclosure as="header" className="bg-gray-800">
@@ -104,17 +105,10 @@ export default function Navbar() {
                 </Disclosure.Button>
               </div>
               <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
-                {!isAuthenticated ? (
-                  <button
-                    onClick={handleClick}
-                    className="flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="sr-only">View notifications</span>
-                    {!isAuthenticated ? "Login" : account}
-                  </button>
-                ) : (
-                  ""
-                )}
+                <button className="flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                  <span className="sr-only">View notifications</span>
+                </button>
+                {/* <SignIn /> */}
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-4 flex-shrink-0">
@@ -157,7 +151,6 @@ export default function Navbar() {
                         className={classNames(
                           "flex py-2 px-4 text-sm text-gray-700 w-full flex-start hover:bg-gray-100"
                         )}
-                        onClick={handleClick}
                       >
                         Sign out
                       </button>
@@ -247,7 +240,6 @@ export default function Navbar() {
                   className={classNames(
                     "flex flex-start w-full rounded-md py-2 px-3 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                   )}
-                  onClick={handleClick}
                 >
                   Sign out
                 </button>
