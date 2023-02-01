@@ -6,7 +6,7 @@ import {
   useEnsName,
 } from "wagmi";
 
-export function Profile() {
+export function Account() {
   const { address, connector, isConnected } = useAccount();
   const { data: ensAvatar } = useEnsAvatar({ address });
   const { data: ensName } = useEnsName({ address });

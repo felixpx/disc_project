@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useAccount, useNetwork, useSignMessage } from "wagmi";
 import { SiweMessage } from "siwe";
-
+import { useConnect } from 'wagmi'
 function SignInButton({
   onSuccess,
   onError,
@@ -82,7 +82,11 @@ function SignInButton({
 }
 
 export function Profile() {
+  const { connect, connectors, error, isLoading, pendingConnector } =
+    useConnect()
+ 
   const { isConnected } = useAccount();
+  const [hasMounted, setHasMounted] = React.useState(false);
 
   const [state, setState] = React.useState<{
     address?: string;
@@ -107,6 +111,14 @@ export function Profile() {
     return () => window.removeEventListener("focus", handler);
   }, []);
 
+   // Hooks
+   React.useEffect(() => {
+    setHasMounted(true);
+}, [])
+
+// Render
+if (!hasMounted) return null;
+
   if (isConnected) {
     return (
       <div>
@@ -124,15 +136,14 @@ export function Profile() {
               Sign Out
             </button>
           </div>
-        ) : (
+        ) :  
           <SignInButton
             onSuccess={({ address }) => setState((x) => ({ ...x, address }))}
             onError={({ error }) => setState((x) => ({ ...x, error }))}
           />
-        )}
+        }
       </div>
     );
   }
 
-  return <div>Connect Wallet</div>;
-}
+ }
