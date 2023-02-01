@@ -12,6 +12,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "axios": "^1.2.6",
     "ethers": "^5.7.2",
+    "iron-session": "^6.3.1",
     "moralis": "^2.12.0",
     "moralis-v1": "^1.12.0",
     "next": "latest",
@@ -19,6 +20,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-moralis": "^1.4.2",
+    "siwe": "^1.1.6",
     "wagmi": "^0.11.0"
   },
   "devDependencies": {
