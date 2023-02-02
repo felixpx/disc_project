@@ -2,15 +2,13 @@ import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useMoralis } from "react-moralis";
 import { useRouter } from "next/router";
-import SignIn from "./Wallet/SignIn";
+import { Profile } from "./Wallet/SignIn";
 
 const user1 = {
   name: "Example Cook",
   email: "0x23guhnb33fte8zh28zhewe973tgu4zg389",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  imageUrl: "/img/profile-img.jpg",
 };
 const navigation = [
   { name: "Explore", href: "/", current: false },
@@ -66,7 +64,7 @@ export default function Navbar() {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src="/img/disc-logo.png"
                     alt="Your Company"
                   />
                 </div>
@@ -107,6 +105,7 @@ export default function Navbar() {
               <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
                 <button className="flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="sr-only">View notifications</span>
+                  <Profile />
                 </button>
                 {/* <SignIn /> */}
 
@@ -217,10 +216,7 @@ export default function Navbar() {
                     {user1.email}
                   </div>
                 </div>
-                <button
-                  type="button"
-                  className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
+                <button className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   {/* <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
                 </button>

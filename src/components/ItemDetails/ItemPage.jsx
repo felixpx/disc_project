@@ -185,10 +185,10 @@ export default function Example() {
                   Details about this release
                 </h2>
 
-                <div
+                {/* <div
                   className="prose prose-sm mt-4 text-gray-500"
                   dangerouslySetInnerHTML={{ __html: product.description }}
-                />
+                /> */}
               </div>
             </div>
           </div>
