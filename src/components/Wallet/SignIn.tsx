@@ -87,7 +87,7 @@ function SignInButton({
 }
 
 export function Profile() {
-  const { connect, connectors, error, isLoading, pendingConnector } =
+  const { connect, connectors, error, data, isLoading, pendingConnector } =
     useConnect();
 
   const { isConnected } = useAccount();
@@ -150,12 +150,16 @@ export function Profile() {
   // }
   if (!isConnected) {
     return (
-      <div>
-        <SignInButton
-          onSuccess={({ address }) => setState((x) => ({ ...x, address }))}
-          onError={({ error }) => setState((x) => ({ ...x, error }))}
-        />
-      </div>
+      <>
+        <div>
+          <SignInButton
+            onSuccess={({ address }) => setState((x) => ({ ...x, address }))}
+            onError={({ error }) => setState((x) => ({ ...x, error }))}
+          />
+        </div>
+
+        {/* <div>{error && <div>{error?.message ?? "Failed to connect"}</div>}</div> */}
+      </>
     );
   }
 }
