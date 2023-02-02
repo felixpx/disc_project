@@ -87,7 +87,6 @@ function SignInButton({
 }
 
 export function Profile() {
-  // return <div>test</div>;
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
 
