@@ -79,9 +79,9 @@ function SignInButton({
     <button
       disabled={!state.nonce || state.loading}
       onClick={signIn}
-      className="text-black"
+      className="text-white ring-2 ring-white py-1 px-2 rounded-xl"
     >
-      Sign-In with Ethereum
+      Login
     </button>
   );
 }
@@ -121,30 +121,40 @@ export function Profile() {
   // Render
   if (!hasMounted) return null;
 
-  if (isConnected) {
+  // if (isConnected) {
+  //   return (
+  // <div>
+  //   {state.address ? (
+  //     <div>
+  //       <div>Signed in as {state.address}</div>
+  //       <button
+  //         onClick={async () => {
+  //           await fetch("/api/logout");
+  //           setState({});
+  //         }}
+  //       >
+  //         Sign Out
+  //       </button>
+  //     </div>
+  // <div>test</div>
+  //     ) : (
+  //       <div>test</div>
+  //       // <SignInButton
+  //       //   onSuccess={({ address }) => setState((x) => ({ ...x, address }))}
+  //       //   onError={({ error }) => setState((x) => ({ ...x, error }))}
+  //       // />
+  //     )}
+  //     </div>
+  // );
+  // );
+  // }
+  if (!isConnected) {
     return (
       <div>
-        <div>some typa text</div>
-        {state.address ? (
-          <div>
-            <div>Signed in as {state.address}</div>
-            <button
-              onClick={async () => {
-                await fetch("/api/logout");
-                setState({});
-              }}
-            >
-              Sign Out
-            </button>
-          </div>
-        ) : (
-          <span>chcek</span>
-          // <SignInButton
-          //   onSuccess={({ address }) => setState((x) => ({ ...x, address }))}
-          //   onError={({ error }) => setState((x) => ({ ...x, error }))}
-          // />
-        )}
-        text
+        <SignInButton
+          onSuccess={({ address }) => setState((x) => ({ ...x, address }))}
+          onError={({ error }) => setState((x) => ({ ...x, error }))}
+        />
       </div>
     );
   }

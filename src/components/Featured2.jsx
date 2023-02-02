@@ -1,5 +1,3 @@
-import { Profile } from "./Wallet/SignIn";
-
 const posts = [
   {
     title: "Featured",
@@ -55,7 +53,6 @@ export default function Example() {
       <div className="absolute inset-0">
         <div className="h-1/3 bg-white sm:h-2/3" />
       </div>
-      <Profile />
       <div className="relative mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
