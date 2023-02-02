@@ -1,63 +1,58 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useMoralis } from "react-moralis";
+// import { useMoralis } from "react-moralis";
 
 export default function UploadPage() {
-  const { Moralis, user } = useMoralis();
+  // const { Moralis, user } = useMoralis();
   // const { saveFile} =
 
   const router = useRouter();
 
-  async function newUpload() {
-    const title = document.getElementById("title").value;
-    const price = document.getElementById("price").value;
-    const SCLink = document.getElementById("SCLink").value;
-    const description = document.getElementById("description").value;
-    const fileUpload = document.getElementById("file-upload").files[0];
-    const musicUpload = document.getElementById("music-upload").files[0];
-    const collaborator = document.getElementById("collaborator").value;
-    const label = document.getElementById("label").value;
+  // async function newUpload() {
+  //   const title = document.getElementById("title").value;
+  //   const price = document.getElementById("price").value;
+  //   const SCLink = document.getElementById("SCLink").value;
+  //   const description = document.getElementById("description").value;
+  //   const fileUpload = document.getElementById("file-upload").files[0];
+  //   const musicUpload = document.getElementById("music-upload").files[0];
+  //   const collaborator = document.getElementById("collaborator").value;
+  //   const label = document.getElementById("label").value;
 
-    // save files to ipfs
+  //   let ipfsIMG = "";
+  //   let ipfsTrack = "";
 
-    let ipfsIMG = "";
-    let ipfsTrack = "";
+  //   if (fileUpload) {
+  //     console.log("uploading pet photo");
+  //     await saveFile("fileUpload", fileUpload, { saveIPFS: true }).then(
+  //       async (hash) => {
+  //         ipfsIMG = hash._ipfs;
+  //       }
+  //     );
+  //   }
+  //   if (musicUpload) {
+  //     console.log("uploading pet photo");
+  //     await saveFile("musicUpload", musicUpload, { saveIPFS: true }).then(
+  //       async (hash) => {
+  //         ipfsTrack = hash._ipfs;
+  //       }
+  //     );
+  //   }
 
-    if (fileUpload) {
-      console.log("uploading pet photo");
-      await saveFile("fileUpload", fileUpload, { saveIPFS: true }).then(
-        async (hash) => {
-          ipfsIMG = hash._ipfs;
-        }
-      );
-    }
-    if (musicUpload) {
-      console.log("uploading pet photo");
-      await saveFile("musicUpload", musicUpload, { saveIPFS: true }).then(
-        async (hash) => {
-          ipfsTrack = hash._ipfs;
-        }
-      );
-    }
+  //   const Track = new Moralis.Object.extend("Track");
+  //   const track = new Track();
 
-    // storing data in moralis
-
-    const Track = new Moralis.Object.extend("Track");
-    const track = new Track();
-
-    track.set("owner", user.get("ethAddress"));
-    track.set("title", title);
-    track.set("price", price);
-    track.set("SCLink", SCLink);
-    track.set("description", description);
-    track.set("ipfsIMG", ipfsIMG);
-    track.set("ipfsTrack", ipfsTrack);
-    track.set("collaborator", collaborator);
-    track.set("label", label);
-    track.save().then(async (p) => {
-      // do something here
-    });
-  }
+  //   track.set("owner", user.get("ethAddress"));
+  //   track.set("title", title);
+  //   track.set("price", price);
+  //   track.set("SCLink", SCLink);
+  //   track.set("description", description);
+  //   track.set("ipfsIMG", ipfsIMG);
+  //   track.set("ipfsTrack", ipfsTrack);
+  //   track.set("collaborator", collaborator);
+  //   track.set("label", label);
+  //   track.save().then(async (p) => {
+  //   });
+  // }
 
   // UPLOAD
 
@@ -98,7 +93,7 @@ export default function UploadPage() {
                     htmlFor="price"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Price per copy in MATIC
+                    Price
                   </label>
                   <div className="mt-1 flex w-full rounded-md shadow-sm">
                     <input
@@ -116,7 +111,7 @@ export default function UploadPage() {
                     htmlFor="SCLink"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Soundcloud link
+                    Soundcloud
                   </label>
                   <div className="mt-1 flex w-full rounded-md shadow-sm">
                     <input
@@ -301,7 +296,7 @@ export default function UploadPage() {
             Cancel
           </button>
           <button
-            onClick={newUpload}
+            onClick={""}
             className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             Save

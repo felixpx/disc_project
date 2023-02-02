@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useAccount, useNetwork, useSignMessage } from "wagmi";
 import { SiweMessage } from "siwe";
-import { useConnect } from 'wagmi'
+import { useConnect } from "wagmi";
+
 function SignInButton({
   onSuccess,
   onError,
@@ -75,7 +76,11 @@ function SignInButton({
   };
 
   return (
-    <button disabled={!state.nonce || state.loading} onClick={signIn}>
+    <button
+      disabled={!state.nonce || state.loading}
+      onClick={signIn}
+      className="text-black"
+    >
       Sign-In with Ethereum
     </button>
   );
@@ -83,8 +88,8 @@ function SignInButton({
 
 export function Profile() {
   const { connect, connectors, error, isLoading, pendingConnector } =
-    useConnect()
- 
+    useConnect();
+
   const { isConnected } = useAccount();
   const [hasMounted, setHasMounted] = React.useState(false);
 
@@ -94,7 +99,6 @@ export function Profile() {
     loading?: boolean;
   }>({});
 
-  // Fetch user when:
   React.useEffect(() => {
     const handler = async () => {
       try {
@@ -103,27 +107,24 @@ export function Profile() {
         setState((x) => ({ ...x, address: json.address }));
       } catch (_error) {}
     };
-    // 1. page loads
     handler();
 
-    // 2. window is focused (in case user logs out of another window)
     window.addEventListener("focus", handler);
     return () => window.removeEventListener("focus", handler);
   }, []);
 
-   // Hooks
-   React.useEffect(() => {
+  // Hooks
+  React.useEffect(() => {
     setHasMounted(true);
-}, [])
+  }, []);
 
-// Render
-if (!hasMounted) return null;
+  // Render
+  if (!hasMounted) return null;
 
   if (isConnected) {
     return (
       <div>
-        {/* Account content goes here */}
-
+        <div>some typa text</div>
         {state.address ? (
           <div>
             <div>Signed in as {state.address}</div>
@@ -136,14 +137,17 @@ if (!hasMounted) return null;
               Sign Out
             </button>
           </div>
-        ) :  
-          <SignInButton
-            onSuccess={({ address }) => setState((x) => ({ ...x, address }))}
-            onError={({ error }) => setState((x) => ({ ...x, error }))}
-          />
-        }
+        ) : (
+          <span>chcek</span>
+          // <SignInButton
+          //   onSuccess={({ address }) => setState((x) => ({ ...x, address }))}
+          //   onError={({ error }) => setState((x) => ({ ...x, error }))}
+          // />
+        )}
+        text
       </div>
     );
   }
+}
 
- }
+export default Profile;

@@ -1,3 +1,5 @@
+import { Profile } from "./Wallet/SignIn";
+
 const posts = [
   {
     title: "Featured",
@@ -5,8 +7,7 @@ const posts = [
     description: "Featured Music",
     date: "Mar 16, 2020",
     datetime: "2020-03-16",
-    imageUrl:
-      "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+    imageUrl: "/img/record1.png",
     readingTime: "6 min",
     // author: {
     //   name: "Roel Aufderehar",
@@ -21,8 +22,7 @@ const posts = [
     description: "Top Sales",
     date: "Mar 10, 2020",
     datetime: "2020-03-10",
-    imageUrl:
-      "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+    imageUrl: "/img/record3.jpeg",
     readingTime: "4 min",
     // author: {
     //   name: "Brenna Goyette",
@@ -37,8 +37,8 @@ const posts = [
     description: "Brand New",
     date: "Feb 12, 2020",
     datetime: "2020-02-12",
-    imageUrl:
-      "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+    imageUrl: "/img/record1.png",
+
     readingTime: "11 min",
     // author: {
     //   name: "Daniela Metz",
@@ -55,6 +55,7 @@ export default function Example() {
       <div className="absolute inset-0">
         <div className="h-1/3 bg-white sm:h-2/3" />
       </div>
+      <Profile />
       <div className="relative mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
